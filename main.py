@@ -8,13 +8,10 @@ Created on Sat Apr  6 15:30:33 2024
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torchvision import datasets, transforms
-from torch.utils.data import DataLoader
 from model import DigitClassifierCNN
 from tqdm import tqdm
 from data_loader import ImgData
 import os
-import numpy as np
 import pandas as pd
 
 
@@ -23,7 +20,7 @@ class EarlyStopping:
         """
         Args:
             patience (int): How long to wait after last time improved.
-                            Default: 7
+                            Default: 10
             verbose (bool): If True, prints a message for each improvement.
                             Default: False
             epsilon (float): Minimum change in the monitored quantity to qualify as an improvement.
@@ -77,16 +74,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 EPOCHS = 100
 BATCH_SIZE = 64
 
-# MNIST_path = './dataset/MNIST_train.pt'
-# MNISTM_path = './dataset/MNISTM_train.pt'
-# SYN_path = './dataset/SYN_train.pt'
-# USPS_path = './dataset/USPS_train.pt'
+DS_NAME = ["MNIST", "MNISTM", "SYN", "USPS"]
 
-# ds_path = [MNIST_path, MNISTM_path, SYN_path, USPS_path]
-# DS_NAME = ["MNIST", "MNISTM", "SYN", "USPS"]
-DS_NAME = ["USPS"]
-
-# ds_idx = 0
 
 for ds_idx in range(len(DS_NAME)):
 
@@ -209,5 +198,3 @@ for ds_idx in range(len(DS_NAME)):
     print()
 
 print('All done')
-
-
