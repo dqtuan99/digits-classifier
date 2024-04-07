@@ -194,7 +194,7 @@ for ds_idx in range(len(DS_NAME)):
     test_info_path = os.path.join(test_info_path, 'test_info.csv')
     df.to_csv(test_info_path, index=True)
 
-    print(f'Saving test info to {train_info_path}')
+    print(f'Saving test info to {test_info_path}')
     print()
 
 print('All done')
